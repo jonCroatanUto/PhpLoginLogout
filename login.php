@@ -1,15 +1,30 @@
 <?php
+ 
+session_start();
 
- session_start();
+$recivedEmail=$_SESSION["email"]=$_POST["email"];
+$recivedPass=$_POST["password"];
+$foundedPass="1233";
+$existingPassword=password_hash($foundedPass,PASSWORD_DEFAULT);
+$existingEmail="jon.garciaorad.asencor@gmail.com";
+require("./functions.php");
+switch (true) {
+        case (($recivedEmail==$existingEmail) && password_verify($recivedPass,$existingPassword)):
+                allowed();
+                break;
+        case (($recivedEmail!=$existingEmail) && !password_verify($recivedPass,$existingPassword)):
+                wrongPassEmail();
+                break;
+        case (($recivedEmail!=$existingEmail)):
+                wrongEmail();           
+                break;
+        case (!password_verify($recivedPass,$existingPassword)):
+                wrongPass();                
+                break; 
+        default:
+                break;
+}
 
-$_SESSION["email"]=$_POST["email"];
-$_SESSION["pass"]=$_POST["password"];
-if(($_SESSION["email"]) && ($_SESSION["pass"])){
-        header("Location:./panel.php");
-}else if(!($_SESSION["email"]) || !($_SESSION["pass"])){
-        header("Location:./index.php"); 
-        $_SESSION["loginPlease"]="logeate antes primo";
-};
 
 
         
