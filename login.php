@@ -1,5 +1,4 @@
 <?php
- 
 session_start();
 
 $recivedEmail=$_SESSION["email"]=$_POST["email"];

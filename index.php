@@ -9,14 +9,27 @@
     <title>Document</title>
 </head>
 <body>
-    <form method="post" action="login.php">
-        <input name="email" type="text" required>
-        <input name="password" type="text" required>
-        <input type="submit" >
-        
-    </form>
+    <section class="container">
+        <div class="row align-items-center">
+            <form method="post" action="login.php" class="row g-3 needs-validation">
+                <div class="col-mb-3">
+                    <label for="emailInput" class="form-label">Write your email</label>
+                    <input name="email" type="email" class="form-control" id="emailInput" required>
+                    <div class="valid-feedback">
+                    Great!!
+                    </div>
+                </div>
+                <div class="col-mb-3">
+                    <label for="passInput" class="form-label">Password</label>
+                    <input name="password"  type="text" class="form-control" id="passInput" required>
+                    <button type="submit" class="btn btn-outline-success">submit</button>
+                </div>    
+            </form>
+        </div> 
+    </section>
     <div>
         <?php
+        
         require("./functions.php");
         
         switch(true){
