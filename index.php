@@ -22,12 +22,7 @@
                 <div class="col-mb-3">
                     <label for="passInput" class="form-label">Password</label>
                     <input name="password"  type="text" class="form-control" id="passInput" required>
-                    <button type="submit" class="btn btn-outline-success">submit</button>
-                </div>    
-            </form>
-        </div> 
-    </section>
-    <div>
+                    <div>
         <?php
         
         require("./functions.php");
@@ -57,6 +52,12 @@
       
         ?>
     </div>
+                    <button type="submit" class="btn btn-outline-success">submit</button>
+                </div>    
+            </form>
+        </div> 
+    </section>
+    
 
 </body>
 </html>

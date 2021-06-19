@@ -2,7 +2,10 @@
 session_start();
 
 function notAllow(){
+    echo "<div>";
     echo $_SESSION["notAllowed"];
+    echo "</div>";
+
     unset ($_SESSION["notAllowed"]);
 }
 function nothtinMatch(){
