@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,60 +9,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
     <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <style>
+    form{
+        margin:100px 25%;
+    }
+    .btn{
+        margin-top:25px;
+    }
+    </style>
     <title>Document</title>
 </head>
-<body>
-    <section class="container">
-        <div class="row align-items-center">
-            <form method="post" action="login.php" class="row g-3 needs-validation">
-                <div class="col-mb-3">
-                    <label for="emailInput" class="form-label">Write your email</label>
-                    <input name="email" type="email" class="form-control" id="emailInput" required>
-                    <div class="valid-feedback">
-                    Great!!
+    <body class="text-center">
+        <main class="form-signin">
+            <form method="post" action="login.php">
+                    <img class="mb-4" src="./images/logo.png" alt width="72" height="57">
+                    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+                    <div class="form-floating">
+                        <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+                        <label for="floatingInput">Write your email</label>
                     </div>
-                </div>
-                <div class="col-mb-3">
-                    <label for="passInput" class="form-label">Password</label>
-                    <input name="password"  type="text" class="form-control" id="passInput" required>
+                    <div class="form-floating">   
+                        <input name="password"  type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+                        <label for="floatingPassword" >Password</label>
+                    </div>
                     <div>
-        <?php
-        
-        require("./functions.php");
-        
-        switch(true){
+                    
+                     <?php
+                        
+                            require("./functions.php");
+                            switch(true){
 
-            case (isset($_SESSION["notAllowed"])):
-                notAllow();
-                break;
+                                case (isset($_SESSION["notAllowed"])):
+                                    notAllow();
+                                    break;
 
-            case(isset($_SESSION["nothingMatch"])):
-                nothtinMatch();
-                break;
+                                case(isset($_SESSION["nothingMatch"])):
+                                    nothtinMatch();
+                                    break;
 
-            case(isset($_SESSION["notEmailMatch"])):
-                notEmailMatch();
-                break;
+                                case(isset($_SESSION["notEmailMatch"])):
+                                    notEmailMatch();
+                                    break;
 
-            case(isset($_SESSION["notPassMatch"])):
-                notPassMatch();
-                break;
+                                case(isset($_SESSION["notPassMatch"])):
+                                    notPassMatch();
+                                    break;
 
-            default:
-                break;
+                                case(isset($_SESSION["allowed"])):
+                                    allow();
+                                    break;
 
-        }
-      
-        ?>
-    </div>
-                    <button type="submit" class="btn btn-outline-success">submit</button>
-                </div>    
+                                default:
+                                    break;
+                            }
+                        
+                        ?>
+                    </div>
+                    <button type="submit" class="btn btn-outline-success">submit</button>   
             </form>
-        </div> 
-    </section>
-    
-
-</body>
+        </main>
+    </body>
 </html>
 
 
